@@ -213,6 +213,7 @@ function openTopic(topicId) {
 
 // Open study modal with specific mode
 function openStudyModal(mode) {
+    document.getElementById('backNav').classList.add('show');
     studyModal.style.display = 'block';
     document.body.style.overflow = 'hidden';
     
@@ -327,6 +328,48 @@ function loadQuestion() {
         quizOptions.appendChild(optionElement);
     });
     
+    // ========== ADD SHOW RESULTS BUTTON HERE ==========
+    // Show Results Button
+    let showResultsBtn = document.getElementById('showResultsBtn');
+    const answeredCount = userAnswers.filter(answer => answer !== null).length;
+    const totalQuestions = quizQuestions.length;
+    
+    if (!showResultsBtn) {
+        showResultsBtn = document.createElement('button');
+        showResultsBtn.id = 'showResultsBtn';
+        showResultsBtn.className = 'btn';
+        showResultsBtn.style.backgroundColor = '#f39c12';
+        showResultsBtn.style.color = 'white';
+        showResultsBtn.style.marginLeft = '10px';
+        showResultsBtn.style.border = 'none';
+        showResultsBtn.style.padding = '10px 15px';
+        showResultsBtn.style.borderRadius = '5px';
+        showResultsBtn.style.cursor = 'pointer';
+        showResultsBtn.innerHTML = '<i class="fas fa-chart-bar"></i> Show Results';
+        showResultsBtn.onclick = function() {
+            if (answeredCount === 0) {
+                alert("Please answer at least one question first!");
+                return;
+            }
+            const correct = userAnswers.filter((ans, idx) => ans === quizQuestions[idx].correct).length;
+            const percentage = Math.round((correct / answeredCount) * 100);
+            alert(`📊 Quiz Results:\n\n✅ Correct: ${correct}/${answeredCount}\n📈 Score: ${percentage}%\n${percentage >= 70 ? '🎉 Excellent!' : '📚 Keep studying!'}`);
+        };
+        
+        // Add to quiz navigation
+        const quizNav = document.querySelector('.quiz-nav');
+        if (quizNav) {
+            quizNav.appendChild(showResultsBtn);
+        }
+    }
+    
+    // Update button text
+    showResultsBtn.innerHTML = `<i class="fas fa-chart-bar"></i> Show Results (${answeredCount}/${totalQuestions})`;
+    showResultsBtn.style.display = answeredCount > 0 ? 'inline-block' : 'none';
+    // ========== END SHOW RESULTS BUTTON ==========
+    
+    // Update button states  <-- This is line 330
+    document.getElementById('prevQuestion').disabled = currentQuestion == 0;
     // Update button states
     document.getElementById('prevQuestion').disabled = currentQuestion === 0;
     document.getElementById('nextQuestion').disabled = currentQuestion === quizQuestions.length - 1;
@@ -345,6 +388,11 @@ function selectAnswer(optionIndex) {
     userAnswers[currentQuestion] = optionIndex;
 }
 
+    // Refresh show results button
+    const btn = document.getElementById('showResultsBtn');
+    if (btn) btn.click();
+
+}
 function showResults() {
     // Calculate score
     quizScore = 0;
