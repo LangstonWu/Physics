@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Pro - HKDSE Study Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-atom"></i>
+                    <span>Physics Pro</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#" class="active">Home</a>
+                    <a href="#topics">Topics</a>
+                    <a href="#modes">Study Modes</a>
+                    <a href="#progress">Progress</a>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search physics concepts...">
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Master HKDSE Physics</h1>
+                <p>Interactive study assistant with flashcards, notes, and 100+ practice questions per chapter. Designed for 15-year-old students.</p>
+                <div class="cta-buttons">
+                    <a href="#topics" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i> START LEARNING
+                    </a>
+                    <a href="#" class="btn btn-secondary" id="watchVideoBtn">
+                        <i class="fas fa-video"></i> WATCH VIDEO
+                    </a>
+                </div>
+                <p class="mt-30" style="font-size: 1rem; opacity: 0.8;">
+                    <i class="fas fa-check-circle"></i> Free start & job guarantee for all students
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="container" id="topics">
+        <div class="section-title">
+            <h2>HKDSE Physics Topics</h2>
+            <p>Complete coverage of all syllabus sections with interactive learning materials</p>
+        </div>
+        
+        <div class="topics-grid" id="topicsGrid">
+            <!-- Topics loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Study Modes -->
+    <section class="container" id="modes">
+        <div class="section-title">
+            <h2>Study Modes</h2>
+            <p>Multiple ways to learn and reinforce physics concepts</p>
+        </div>
+        
+        <div class="study-modes">
+            <div class="mode-card">
+                <div class="mode-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <h3>Interactive Slides</h3>
+                <p>Step-by-step notes with diagrams, formulas, and examples for each topic.</p>
+                <button class="btn btn-primary" onclick="openStudyModal('slides')">
+                    <i class="fas fa-book-open"></i> View Slides
+                </button>
+            </div>
+            
+            <div class="mode-card">
+                <div class="mode-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3>Smart Flashcards</h3>
+                <p>Digital flashcards with spaced repetition to improve memory retention.</p>
+                <button class="btn btn-primary" onclick="openStudyModal('flashcards')">
+                    <i class="fas fa-clone"></i> Practice Flashcards
+                </button>
+            </div>
+            
+            <div class="mode-card">
+                <div class="mode-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>Practice Questions</h3>
+                <p>100+ MCQs per chapter with detailed explanations and progress tracking.</p>
+                <button class="btn btn-primary" onclick="openStudyModal('quiz')">
+                    <i class="fas fa-pencil-alt"></i> Start Quiz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="container" id="progress">
+        <div class="section-title">
+            <h2>Your Study Progress</h2>
+            <p>Track your learning journey across all physics topics</p>
+        </div>
+        
+        <div class="progress-dashboard">
+            <div class="mode-card">
+                <h3>Overall Progress</h3>
+                <div class="progress-bar mt-20">
+                    <div class="progress-fill" id="overallProgress" style="width: 35%"></div>
+                </div>
+                <p class="mt-20" id="progressText">35% complete • 7/20 topics mastered</p>
+            </div>
+            
+            <div class="mode-card">
+                <h3>Recent Activity</h3>
+                <ul id="recentActivity" style="list-style: none; margin-top: 20px;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                        Completed Mechanics flashcards
+                    </li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray);">
+                        <i class="fas fa-pencil-alt" style="color: var(--primary);"></i>
+                        Scored 85% on Waves quiz
+                    </li>
+                    <li style="padding: 10px 0;">
+                        <i class="fas fa-book" style="color: var(--accent);"></i>
+                        Studied Heat transfer slides
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Physics Pro</h3>
+                    <p style="color: #adb5bd; margin-bottom: 20px;">Interactive study assistant for HKDSE Physics students. Master concepts with slides, flashcards, and quizzes.</p>
+                    <div class="d-flex align-center" style="gap: 15px;">
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#topics">All Topics</a></li>
+                        <li><a href="#modes">Study Modes</a></li>
+                        <li><a href="#progress">Progress Tracking</a></li>
+                        <li><a href="#">Exam Tips</a></li>
+                        <li><a href="#">Formula Sheet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Past Papers</a></li>
+                        <li><a href="#">Video Lessons</a></li>
+                        <li><a href="#">Study Planner</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">Teacher Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@physicspro.hk</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +852 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Hong Kong Science Park</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Physics Pro. All rights reserved. HKDSE is a registered trademark of HKEAA.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Study Modal -->
+    <div class="modal" id="studyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Study Materials</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="study-tabs">
+                    <button class="tab-btn active" data-tab="slides">Slides</button>
+                    <button class="tab-btn" data-tab="flashcards">Flashcards</button>
+                    <button class="tab-btn" data-tab="quiz">Practice Questions</button>
+                </div>
+                
+                <!-- Slides Content -->
+                <div class="slide-container active" id="slidesContent">
+                    <div class="slide">
+                        <h3 id="slideTitle">Introduction to Mechanics</h3>
+                        <div class="slide-content" id="slideContent">
+                            <!-- Slide content loaded by JS -->
+                        </div>
+                        <div class="slide-nav">
+                            <button class="btn btn-secondary" id="prevSlide">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <span id="slideCounter">Slide 1 of 10</span>
+                            <button class="btn btn-primary" id="nextSlide">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Flashcards Content -->
+                <div class="flashcard-container" id="flashcardsContent">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-front">
+                            <h3>Flashcard</h3>
+                            <div class="flashcard-content" id="flashcardFront">
+                                <!-- Front content loaded by JS -->
+                            </div>
+                            <p class="flashcard-hint">Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3>Answer</h3>
+                            <div class="flashcard-content" id="flashcardBack">
+                                <!-- Back content loaded by JS -->
+                            </div>
+                            <p class="flashcard-hint">Click to flip back</p>
+                        </div>
+                    </div>
+                    <div class="flashcard-nav">
+                        <button class="btn btn-secondary" id="prevFlashcard">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <span id="flashcardCounter">Card 1 of 50</span>
+                        <button class="btn btn-primary" id="nextFlashcard">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quiz Content -->
+                <div class="quiz-container" id="quizContent">
+                    <div class="quiz-progress">
+                        <span id="quizTopic">Mechanics</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quizProgress" style="width: 10%"></div>
+                        </div>
+                        <span id="quizCounter">Question 1 of 10</span>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <h3 id="quizQuestion">Loading question...</h3>
+                        <div class="quiz-options" id="quizOptions">
+                            <!-- Options loaded by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-nav">
+                        <button class="btn btn-secondary" id="prevQuestion">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="btn btn-primary" id="nextQuestion">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-primary hidden" id="showResults">
+                            See Results <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="quiz-results hidden" id="quizResults">
+                        <h2>Quiz Completed!</h2>
+                        <div class="score-circle">
+                            <div class="score-inner">
+                                <span id="quizScore">0</span>%
+                            </div>
+                        </div>
+                        <h3 id="scoreMessage">Keep practicing!</h3>
+                        <p id="scoreDetails">You answered 0 out of 10 questions correctly</p>
+                        <div class="mt-30">
+                            <button class="btn btn-primary" id="restartQuiz">
+                                <i class="fas fa-redo"></i> Try Again
+                            </button>
+                            <button class="btn btn-secondary" id="reviewQuestions">
+                                <i class="fas fa-list"></i> Review Answers
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
