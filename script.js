@@ -234,6 +234,7 @@ function openStudyModal(mode) {
             loadFlashcards();
             break;
         case 'quiz':
+            
             startQuiz();
             break;
     }
@@ -392,6 +393,13 @@ function setupEventListeners() {
     closeModal.addEventListener('click', () => {
         studyModal.style.display = 'none';
         document.body.style.overflow = 'auto';
+    });
+    
+    // ===== BACK BUTTON =====
+    document.getElementById('backButton').addEventListener('click', function() {
+        studyModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.getElementById('backNav').classList.remove('show');
     });
     
     // Close modal when clicking outside
